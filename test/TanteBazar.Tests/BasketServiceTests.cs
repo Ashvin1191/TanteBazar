@@ -3,6 +3,7 @@ using Serilog;
 using Shouldly;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TanteBazar.Core.DataServices;
 using TanteBazar.Core.Services;
@@ -37,9 +38,37 @@ namespace TanteBazar.Tests
         }
 
         [Fact]
-        public async void IfNewBasketThen()
+        public async void IfCustomerIdIsValidAndBasketExists()
         {
-            var result = await _basketservice.CheckoutBasket()
+            basketDataServiceMoq
+                .Setup(x => x.QueryBasket(It.IsAny<string>()))
+                .ReturnsAsync(new List<Core.Dtos.Basket>
+                {
+                    new Core.Dtos.Basket
+                    {
+                        CustomerId = Guid.NewGuid(),
+                        DateAdded = DateTime.Now,
+                        DateLastModified = DateTime.Now,
+                        ItemName = "Test",
+                        Quantity = 23,
+                        TotalPrice = 21.10m,
+                        UnitPrice = 11.2m
+                    },
+                    new Core.Dtos.Basket
+                    {
+                        CustomerId = Guid.NewGuid(),
+                        DateAdded = DateTime.Now,
+                        DateLastModified = DateTime.Now,
+                        ItemName = "Test",
+                        Quantity = 23,
+                        TotalPrice = 21.10m,
+                        UnitPrice = 11.2m
+                    }
+                });
+
+            var result = await _basketservice.GetBasket("xxxxx-xxxx-xxxx");
+
+            result.Any().ShouldBe(true);
         }
     }
 }
