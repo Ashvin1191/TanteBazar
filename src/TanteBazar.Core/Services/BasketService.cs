@@ -49,9 +49,9 @@ namespace TanteBazar.Core.Services
             if (string.IsNullOrEmpty(customerId))
             {
                 _logger
-                    .ForContext<BasketDataService>()
                     .ForContext("MethodName", nameof(GetBasket))
                     .Error("customerId not specified");
+
                 return null;
             }
 
@@ -69,12 +69,16 @@ namespace TanteBazar.Core.Services
                     .ForContext<BasketDataService>()
                     .Information("No basket found for this user.");
 
+                throw new Exception("No basket found for this user.");
+
             }
             else if(getBasket.Where(x => x.ItemName.Equals(item.Name)) == null)
             {
                 _logger
                     .ForContext<BasketDataService>()
                     .Information("No such Item present in the basket");
+
+                throw new Exception("No such Item present in the basket");
             }
             else
             {
@@ -91,6 +95,8 @@ namespace TanteBazar.Core.Services
                 _logger
                     .ForContext<BasketDataService>()
                     .Information("NO Item present for check out");
+
+                throw new Exception("Cannot checkout an empty basket");
             }
             else
             {
