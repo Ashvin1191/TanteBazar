@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using TanteBazar.WebApi.Client;
 
 namespace TanteBazar.Example.Console
@@ -29,8 +30,18 @@ namespace TanteBazar.Example.Console
             System.Console.WriteLine($"Total item in basket: {basket.TotalItems}, TotalPrice: {basket.TotalPrice}");
             foreach(var basketItem in basket.Items)
             {
-                System.Console.WriteLine($"{basketItem.Quantity} x {basketItem.ItemName} = {basketItem.UnitPrice}");
+                System.Console.WriteLine($"{basketItem.Quantity} x {basketItem.ItemName}, each: {basketItem.UnitPrice}");
             }
+
+            System.Console.WriteLine();
+
+            System.Console.WriteLine("Adding an item to the basket...");
+            Task.Run(() => ApiClient.AddItemToBasket(new WebApi.Client.Models.BasketItemRequest
+            {
+                Id = 3,
+                Quantity = 1
+            }));
+            System.Console.WriteLine("Done");
 
             System.Console.ReadKey();
         }

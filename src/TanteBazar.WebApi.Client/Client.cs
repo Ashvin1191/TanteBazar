@@ -59,5 +59,23 @@ namespace TanteBazar.WebApi.Client
 
             return result;
         }
+
+        public async Task AddItemToBasket(BasketItemRequest item)
+        {
+            _httpClient.DefaultRequestHeaders.Add("X_API_SECRET", _config.ClientSecret);
+
+            var httpRequest = new HttpRequestMessage();
+            httpRequest.Method = HttpMethod.Post;
+            httpRequest.RequestUri = new Uri($"{_config.ServiceUrl}/api/basket");
+            httpRequest.Content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
+
+            using (var httpResponse = await _httpClient.SendAsync(httpRequest))
+            {
+                if (!httpResponse.IsSuccessStatusCode)
+                {
+                    throw new Exception($"adding item to basket was not successful. Error Code: {httpResponse.StatusCode}");
+                }
+            }
+        } 
     }
 }
