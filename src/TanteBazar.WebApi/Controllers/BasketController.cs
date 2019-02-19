@@ -56,7 +56,15 @@ namespace TanteBazar.WebApi.Controllers
 
             if (apiUser == null) return Unauthorized("Invalid or no X_API_SECRET");
 
-            await _basketService.RemoveFromBasket(apiUser.CustomerKey, basketItemRequest.Id);
+            try
+            {
+                await _basketService.RemoveFromBasket(apiUser.CustomerKey, basketItemRequest.Id);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
 
             return Ok("Item has been removed");
         }
@@ -69,7 +77,15 @@ namespace TanteBazar.WebApi.Controllers
 
             if (apiUser == null) return Unauthorized("Invalid or no X_API_SECRET");
 
-            await _basketService.CheckoutBasket(apiUser.CustomerKey);
+            try
+            {
+                await _basketService.CheckoutBasket(apiUser.CustomerKey);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
 
             return Ok("Item has been checkout");
         }

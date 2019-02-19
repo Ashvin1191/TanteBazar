@@ -42,6 +42,21 @@ namespace TanteBazar.Example.Console
                 Quantity = 1
             }));
             System.Console.WriteLine("Done");
+            System.Console.WriteLine();
+
+            System.Console.WriteLine("Removing 1 item from the basket...");
+
+            Task.Run(() => ApiClient.RemoveFromBasket(new WebApi.Client.Models.BasketItemRequest
+            {
+                Id = 1
+            }));
+            System.Console.WriteLine("Done");
+            System.Console.WriteLine();
+
+            System.Console.WriteLine("Checking out the basket...");
+            Task.Run(() => ApiClient.CheckoutBasket(new WebApi.Client.Models.BasketItemRequest()));
+            System.Console.WriteLine("Done");
+            System.Console.WriteLine();
 
             System.Console.ReadKey();
         }

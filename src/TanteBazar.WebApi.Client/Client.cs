@@ -76,6 +76,46 @@ namespace TanteBazar.WebApi.Client
                     throw new Exception($"adding item to basket was not successful. Error Code: {httpResponse.StatusCode}");
                 }
             }
-        } 
+        }
+
+        public async Task CheckoutBasket(BasketItemRequest item)
+        {
+            _httpClient.DefaultRequestHeaders.Add("X_API_SECRET", _config.ClientSecret);
+
+            var httpRequest = new HttpRequestMessage();
+            httpRequest.Method = HttpMethod.Post;
+            httpRequest.RequestUri = new Uri($"{_config.ServiceUrl}/api/basket/checkout");
+            httpRequest.Content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
+
+
+            using (var httpResponse = await _httpClient.SendAsync(httpRequest))
+            {
+                if (!httpResponse.IsSuccessStatusCode)
+                {
+                    throw new Exception($"Error during check out. Error Code: {httpResponse.StatusCode}");
+                }
+            }
+
+        }
+
+        public async Task RemoveFromBasket(BasketItemRequest item)
+        {
+            _httpClient.DefaultRequestHeaders.Add("X_API_SECRET", _config.ClientSecret);
+
+            var httpRequest = new HttpRequestMessage();
+            httpRequest.Method = HttpMethod.Post;
+            httpRequest.RequestUri = new Uri($"{_config.ServiceUrl}/api/basket/remove");
+            httpRequest.Content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
+
+
+            using (var httpResponse = await _httpClient.SendAsync(httpRequest))
+            {
+                if (!httpResponse.IsSuccessStatusCode)
+                {
+                    throw new Exception($"Error removing item from basket. Error Code: {httpResponse.StatusCode}");
+                }
+            }
+
+        }
     }
 }
