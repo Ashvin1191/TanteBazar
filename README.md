@@ -1,11 +1,17 @@
 # TanteBazar
 An Ficticious Restfull Web API built with Dotnet Core 2.2.
 The API Allow a user/customer to the following: 
-..* Get Item
-..* Save Item to a Basket
-..* Remove Item from a Basket
-..* Check Selected Item
+
+*Get Item
+*Save Item to a Basket
+*Remove Item from a Basket
+*Checkout Selected Item
+
+# The Project Main Solution Breakdown:
  
+ 1. ### Src : the source folder:
+ + #### TanteBazar.core
+
 
 
 
