@@ -1,11 +1,10 @@
 # TanteBazar
 An Ficticious Restfull Web API built with Dotnet Core 2.2.
 The API Allow a user/customer to the following: 
-
-1.Get Item
-2.Save Item to a Basket
-3.Remove Item from a Basket
-4.Checkout Selected Item
+1. Get Item
+2. Save Item to a Basket
+3. Remove Item from a Basket
+4. Checkout Selected Item
 
 # The Project Main Solution Breakdown:
  1. ### Src : The source folder:
@@ -46,8 +45,8 @@ _Define an authorization class. i.e The customer key and value verification_
 4.Models
 _Maintain data of the application  
 
-##TanteBazar.Tests
-1.Define xunit test.
+## TanteBazar.Tests
+1.Define xunit test
 
 
 ### Note Connection string for APIConnectionString will be send via mail.
