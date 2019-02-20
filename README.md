@@ -31,18 +31,18 @@ There are two properties:
 1._CustomerID_
 2._CustName_
 
-3. ###Services
+3. ### Services
 Define all the interfaces in the project, use in the controller module.
 
 ## TanteBazar.WebApi 
 The Web Api main components where the follows are defined:
-1.Controller
+1. Controller
 _Define route for different http request made by the user_
-2.Mapper
+2. Mapper
 _Mapping of different entities define in the DTOs_
-3.Middleware
+3. Middleware
 _Define an authorization class. i.e The customer key and value verification_
-4.Models
+4. Models
 _Maintain data of the application  
 
 ## TanteBazar.Tests
