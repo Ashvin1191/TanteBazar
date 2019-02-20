@@ -36,20 +36,20 @@ Define all the interfaces in the project, use in the controller module.
 
 ## TanteBazar.WebApi 
 The Web Api main components where the follows are defined:
-1. Controller
+1. Controller:
 _Define route for different http request made by the user_
-2. Mapper
+2. Mapper:
 _Mapping of different entities define in the DTOs_
-3. Middleware
+3. Middleware:
 _Define an authorization class. i.e The customer key and value verification_
-4. Models
-_Maintain data of the application  
+4. Models:
+_Maintain data of the application_  
 
 ## TanteBazar.Tests
 1.Define xunit test
 
 
-### Note Connection string for APIConnectionString will be send via mail.
+### Note: #### Connection string for APIConnectionString will be send via mail.
 
 # Postman Collection
 To Test test the above functionality of the WEB API, Please use this postman collection: https://www.getpostman.com/collections/a39c73dd527aa131aa38
