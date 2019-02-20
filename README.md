@@ -6,6 +6,10 @@ The API Allow a user/customer to the following:
 3. Remove Item from a Basket
 4. Checkout Selected Item
 
+###### A Customer is able to view a list of item in the store.The customer can select an item base on the item id and add it to a basket.Only one basket is available per customer. After the customer has added a list of selected item, he/she can check out the basket (all item in the basket is checkout). In addition a customer can remove items form the basket, removing items will clear the customer's basket.In short the customer is allow to fully manage her/his basket using the availablt list of items.  
+
+
+
 # The Project Main Solution Breakdown:
  1. ### Src : The source folder:
  The following is define in the Source folder:
@@ -49,10 +53,27 @@ _Maintain data of the application_
 ## TanteBazar.Tests
 1.Define xunit test
 
+## Client side
+A fully asynchronous application exposes the below method which allows a user/client to perform task like view list of item,
+added item to a basket and checkout item from the basket;
+1. GetBasketAsync()
+Allow the user to a a list of item 
+2. AddItemToBasket()
+Allow the user to add item to a basket
+3. CheckoutBasket()
+Allow the user to checkout item added to the basket
+4. RemoveFromBasket()
+Allow the user to remove item from the basket
+
+The web api can be integrated with other application by using http request or by using the available the method available in the client app.
 
 ### Note: 
 #### Connection string for APIConnectionString will be send via mail.
 #### The Data is stored in a database (SQl Server) on Azure Platform.
 
 # Postman Collection
-To Test test the above functionality of the WEB API, Please use this postman collection: https://www.getpostman.com/collections/a39c73dd527aa131aa38
+To Test test the above functionality of the WEB API.
+###### A list of customerId is provided via email to user in the below postman collection.
+
+Please use this postman collection: 
+https://www.getpostman.com/collections/a39c73dd527aa131aa38
