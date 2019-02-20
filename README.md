@@ -26,10 +26,11 @@ Allow a user to checkout item added to the basket
 
 2. ### Dtos
 The Dtos includes properties of different models(Entity)in the project which define how data be sent over the network.
- ###### Class Customer
+Example:
+ ###### Customer Class
 There are two properties: 
-1._CustomerID_
-2._CustName_
+1. _CustomerID_
+2. _CustName_
 
 3. ### Services
 Define all the interfaces in the project, use in the controller module.
