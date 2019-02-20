@@ -50,7 +50,9 @@ _Maintain data of the application_
 1.Define xunit test
 
 
-### Note: #### Connection string for APIConnectionString will be send via mail.
+### Note: 
+#### Connection string for APIConnectionString will be send via mail.
+#### The Data is store in a database (SQl Server) on Azure Platform.
 
 # Postman Collection
 To Test test the above functionality of the WEB API, Please use this postman collection: https://www.getpostman.com/collections/a39c73dd527aa131aa38
